@@ -3,14 +3,17 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
 
+ 
+
+
     const menuItems=<>
-        <li><Link to='/home'>Home</Link></li>
-        <li><Link to='/blogs'>Blogs</Link></li>
-        <li><Link to='/login'>Login</Link></li>
+        <li><Link to='/home' className='font-bold'>Home</Link></li>
+        <li><Link to='/blogs' className='font-bold'>Blogs</Link></li>
+        <li><Link to='/login' className='font-bold'>Login</Link></li>
     </>
     
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-accent">
   <div className="navbar-start">
     <div className="dropdown">
       <label tabIndex="0" className="btn btn-ghost lg:hidden">

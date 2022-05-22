@@ -16,7 +16,7 @@ const Banner = () => {
 
     return (
         <div className='grid place-items-center '>
-        <div className="carousel w-full ">
+        <div className="carousel w-5/6 ">
   <div id="item1" className="carousel-item w-full ">
       
     <img src={carousel1} className="w-full" style={{height:'350px',opacity:'0.75'}} alt=""/>
