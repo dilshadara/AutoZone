@@ -10,12 +10,12 @@ import carousel4 from '../../../images/carousel/auto-banner-9.jpg';import './ban
 
 const Banner = () => {
 
-    let carousel1Text=<><p style={{color:'black', fontWeight:'bold', fontSize:'20px'}}>BUY FROM US AND GET YOUR</p><br></br><p style={{color:'black', fontWeight:'bold', fontSize:'35px'}}>Exciting Bundle</p></>;
+    let carousel1Text=<><p style={{color:'black', fontWeight:'bold', fontSize:'20px'}}>BUY FROM US AND GET YOUR</p><p style={{color:'black', fontWeight:'bold', fontSize:'35px'}}>Exciting Bundle</p></>;
 
    
 
     return (
-        <div className='grid place-items-center '>
+        <div className='grid place-items-center mt-3 mb-8'>
         <div className="carousel w-5/6 ">
   <div id="item1" className="carousel-item w-full ">
       

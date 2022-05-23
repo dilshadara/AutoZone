@@ -6,14 +6,14 @@ const Footer = () => {
         
         <div className=" md:flex flex-row ">
             <div className="basis-1/4 md:basis-1/3 px-10">
-                <p className='text-lg font-bold text-base-100'>AutoZone</p>
+                <p className='text-lg font-bold text-accent'>AutoZone</p>
                 <p className='text-base-100'>Banani, Baridhara, Bashundhara</p>
                 <p className='text-base-100'>01712000000</p>
                 <p className='text-base-100'>Sun-Thurs 9:00 to 5:00</p>
                 <p className='text-base-100'>support@autozone.com</p>
             </div>
   <div className="basis-1/4 md:basis-1/3">
-  <p className='text-lg font-bold text-white'>Information</p>
+  <p className='text-lg font-bold text-accent'>Information</p>
                 <p className='text-neutral hover:text-accent'>About Us</p>
                 <p className='text-neutral hover:text-accent'>Privacy Policy</p>
                 <p className='text-neutral hover:text-accent'>Terms & Conditions</p>
@@ -21,7 +21,7 @@ const Footer = () => {
                 <p className='text-neutral hover:text-accent'>Order & Return Policy</p>
   </div>
   <div class="basis-1/2 md:basis-1/3">
-  <p className='text-lg font-bold text-white '>Why Consider Us</p>
+  <p className='text-lg font-bold text-accent '>Why Consider Us</p>
       <ul className='list-disc px-6 '>
           <li className='text-neutral hover:text-accent'>Quick Support</li>
           <li className='text-neutral hover:text-accent'>Availability</li>
@@ -32,7 +32,7 @@ const Footer = () => {
   </div>
         </div>
         <div>
-        <p className='text-lg font-bold text-base-100 text-center my-5'>&copy; AutoZone all rights reserved</p>
+        <p className='text-xs font-bold text-accent text-center my-5'>&copy; AutoZone all rights reserved</p>
             </div>
         </div>
     );
