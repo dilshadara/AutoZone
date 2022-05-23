@@ -12,8 +12,8 @@ const Footer = () => {
                 <p className='text-base-100'>Sun-Thurs 9:00 to 5:00</p>
                 <p className='text-base-100'>support@autozone.com</p>
             </div>
-  <div className="basis-1/4 md:basis-1/3">
-  <p className='text-lg font-bold text-accent'>Information</p>
+  <div className=" basis-1/4 md:basis-1/3">
+  <p className=' text-lg font-bold text-accent'>Information</p>
                 <p className='text-neutral hover:text-accent'>About Us</p>
                 <p className='text-neutral hover:text-accent'>Privacy Policy</p>
                 <p className='text-neutral hover:text-accent'>Terms & Conditions</p>
