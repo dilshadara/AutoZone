@@ -18,9 +18,12 @@ const Navbar = () => {
         <li><Link to='/portfolio' className='font-bold'>My Portfolio</Link></li>
         {
           user?
-          <button onClick={handleSignOut} className='font-bold btn btn-outline'>
-          Sign Out
-          </button>
+          // <button onClick={handleSignOut} className='font-bold '>
+          // Sign Out
+          // </button>
+
+          <li onClick={handleSignOut} className='font-bold'><Link to=''><p className='text-white'>{user.displayName}</p> Sign Out</Link></li>
+           
           :
           <li><Link to='/login' className='font-bold'>Login</Link></li>
          

@@ -5,6 +5,7 @@ import SocialLogin from './SocialLogin';
 import { useCreateUserWithEmailAndPassword   } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
+import { useUpdateProfile } from 'react-firebase-hooks/auth';
 
 const Register = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -23,10 +24,12 @@ const Register = () => {
         error,
       ] = useCreateUserWithEmailAndPassword(auth);
 
+      const [updateProfile, updating, errorUserProfile] = useUpdateProfile(auth);
+
     let errorElement;
 
    
-    const onSubmit = data => {
+    const onSubmit = async data => {
         // console.log(data);
         if(data.password !== data.confirmPassword){
             setErr('Password does not match.');
@@ -34,16 +37,19 @@ const Register = () => {
             return;
           }
 
-        createUserWithEmailAndPassword(data.email, data.password);
-        navigate('/');
+        await createUserWithEmailAndPassword(data.email, data.password);
+        await updateProfile({ displayName:data.name });
+        // console.log(data)
+            navigate('/');
+  
     }
 
-    if (loading ) {
+    if (loading || updating) {
         return <Loading></Loading>;
       } 
     
-      if (error) {
-        errorElement = <p className='label-text-alt text-red-500'>{error?.message}</p>
+      if (error || errorUserProfile) {
+        errorElement = <p className='label-text-alt text-red-500'>{error?.message}{errorUserProfile?.message}</p>
       }
 
     //   if (user) {
@@ -52,13 +58,31 @@ const Register = () => {
 
 
     return (
-        <div className='h-screen'>
+        // <div className='h-screen pb-20'>
         <div className='flex justify-center item-center mb-10 mt-10'>
         <div className="card w-96 bg-base-100 shadow-xl">
             <div className="card-body">
                 <h2 className="text-center text-2xl font-bold text-accent">Register</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-control w-full max-w-xs">
+                        <label className="label">
+                            <span className="label-text">Name</span>
+                            
+                        </label>
+                        <input {...register("name", {
+                                        required:{
+                                            value: true,
+                                            message: 'Name is required'
+                                        },
+                                        
+                                })} type="text" placeholder="Your Name" className="input input-bordered w-full max-w-xs" />
+                                <label className="label">
+                                    {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>
+                                   }
+                                  
+                                </label>
+                        </div>
+                        <div className="form-control w-full max-w-xs">
                         <label className="label">
                             <span className="label-text">Email</span>
                             
@@ -131,7 +155,6 @@ const Register = () => {
     </form>
      {errorElement} 
      <p className='label-text-alt text-red-500'>{err}</p>
-     
                 <div className="divider">OR</div>
                 <p className='mb-2 label-text'>Already have an account in AutoZone? <Link to="/login" className=' text-accent label-text hover:font-bold' onClick={navigateRegister}>Log In</Link></p>
            
@@ -141,7 +164,7 @@ const Register = () => {
             </div>
 </div>
 </div>
-</div>
+// </div>
     );
 };
 
