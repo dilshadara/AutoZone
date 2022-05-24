@@ -5,7 +5,7 @@ import BusinessSummary from './BusinessSummary';
 
 const Home = () => {
     return (
-        <div className='h-screen'>
+        <div >
             <Banner></Banner>
             <BusinessSummary></BusinessSummary>
             
