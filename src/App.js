@@ -8,6 +8,11 @@ import NotFound from './Pages/Shared/NotFound/NotFound';
 import Login from './Pages/Login/Login';
 import MyPortfolio from './Pages/MyPortfolio/MyPortfolio';
 import Register from './Pages/Login/Register';
+import RequireAuth from './Pages/Login/RequireAuth';
+import Dashboard from './Pages/Dashboard/Dashboard';
+import MyProfile from './Pages/Dashboard/MyProfile';
+import AddReview from './Pages/Dashboard/AddReview';
+import MyOrders from './Pages/Dashboard/MyOrders';
 
 function App() {
   return (
@@ -20,6 +25,15 @@ function App() {
         <Route path="/portfolio" element={<MyPortfolio></MyPortfolio>} />
         <Route path="/login" element={<Login></Login>} />
         <Route path="/register" element={<Register></Register>} />
+        <Route path="/dashboard" element={
+          <RequireAuth>
+             <Dashboard></Dashboard>
+          </RequireAuth>
+        }>
+          <Route index element={<MyProfile></MyProfile>}></Route>
+          <Route path="addReview" element={<AddReview></AddReview>}></Route>
+          <Route path="myOrders" element={<MyOrders></MyOrders>}></Route>
+        </Route>
         <Route path="*" element={<NotFound></NotFound>} />
       </Routes>
       <Footer></Footer>
