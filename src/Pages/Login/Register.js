@@ -1,36 +1,41 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { useForm } from "react-hook-form";
-import { Link, useNavigate,useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from './SocialLogin';
-import { useSignInWithEmailAndPassword   } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword   } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 
-const Login = () => {
-   
+const Register = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-
+    const [err, setErr]=useState('');
     const navigate = useNavigate();
     const navigateRegister = () => {
-      navigate('/register');
+      navigate('/login');
     }
 
-    const location =useLocation();
-    let from = location.state?.from?.pathname || "/";
+    // const location =useLocation();
+    // let from = location.state?.from?.pathname || "/";
 
     const [
-        signInWithEmailAndPassword,
-        user,
+        createUserWithEmailAndPassword,
         loading,
         error,
-    ] = useSignInWithEmailAndPassword(auth);
+      ] = useCreateUserWithEmailAndPassword(auth);
 
     let errorElement;
 
    
     const onSubmit = data => {
         // console.log(data);
-        signInWithEmailAndPassword(data.email, data.password);
+        if(data.password !== data.confirmPassword){
+            setErr('Password does not match.');
+            // console.log(password,confirmPassword);
+            return;
+          }
+
+        createUserWithEmailAndPassword(data.email, data.password);
+        navigate('/');
     }
 
     if (loading ) {
@@ -41,16 +46,17 @@ const Login = () => {
         errorElement = <p className='label-text-alt text-red-500'>{error?.message}</p>
       }
 
-      if (user) {
-        navigate(from, { replace: true });
-      }
+    //   if (user) {
+    //     navigate(from, { replace: true });
+    //   }
+
 
     return (
         <div className='h-screen'>
         <div className='flex justify-center item-center mb-10 mt-10'>
         <div className="card w-96 bg-base-100 shadow-xl">
             <div className="card-body">
-                <h2 className="text-center text-2xl font-bold text-accent">Login</h2>
+                <h2 className="text-center text-2xl font-bold text-accent">Register</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
@@ -97,13 +103,38 @@ const Login = () => {
                                    }
                                 </label>
                         </div>
+                        <div className="form-control w-full max-w-xs">
+                        <label className="label">
+                            <span className="label-text">Confirm Password</span>
+                            
+                        </label>
+                        <input {...register("confirmPassword", {
+                                        required:{
+                                            value: true,
+                                            message: 'Confirm password is required'
+                                        },
+                                        minLength:{
+                                            value:6,
+                                            message:'Password should be 6 characters long'
+                                        }
+                                        
+                                })} type="password" placeholder="Your Confirm Password" className="input input-bordered w-full max-w-xs" />
+                                <label className="label">
+                                    {errors.confirmPassword?.type === 'required' && <span className="label-text-alt text-red-500">{errors.confirmPassword.message}</span>
+                                   }
+                                   {errors.confirmPassword?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.confirmPassword.message}</span>
+                                   }
+                                </label>
+                        </div>
         
-      <input className='btn btn-accent w-full max-w-xs' type="submit" value="Login" />
+      <input className='btn btn-accent w-full max-w-xs' type="submit" value="Register" />
     </form>
-    {errorElement} 
+     {errorElement} 
+     <p className='label-text-alt text-red-500'>{err}</p>
+     
                 <div className="divider">OR</div>
-                <p className='mb-2 label-text'>New to AutoZone? <Link to="/register" className=' text-accent label-text hover:font-bold' onClick={navigateRegister}>Create New Account</Link></p>
-          
+                <p className='mb-2 label-text'>Already have an account in AutoZone? <Link to="/login" className=' text-accent label-text hover:font-bold' onClick={navigateRegister}>Log In</Link></p>
+           
                 <div className="card-actions justify-center">
                     <SocialLogin></SocialLogin>
                 </div>
@@ -114,4 +145,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;

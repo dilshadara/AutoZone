@@ -7,11 +7,12 @@ module.exports = {
     themes: [
       {
         autotheme: {
-          primary: "#F4F4F4",
+          primary: "#f4f4f4",
           secondary: "#212121",
           accent: "#FDBA55",
           neutral: "#9a9a9a",
           "base-100": "#ffffff",
+          "error":"#f1f1f1"
         },
       },
       "dark",

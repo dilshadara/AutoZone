@@ -1,10 +1,13 @@
 import React from 'react';
-import PageNotFound from '../../../images/404-error-page-not-found.jpg';
+import PageNotFound from '../../../images/404.jpg';
  
 const NotFound = () => {
     return (
-        <div>
-            <img src={PageNotFound} alt=""></img>
+        <div className='w-full flex justify-center item-center bg-error h-screen'>
+           
+                <img style={{height:'400px'}}  src={PageNotFound} alt=""></img>
+           
+            
         </div>
     );
 };
