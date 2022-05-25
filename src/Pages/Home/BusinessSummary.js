@@ -4,12 +4,12 @@ import { IconContext } from "react-icons";
 
 const BusinessSummary = () => {
     return (
-        <div className='mt-10'>
+        <div className='mt-10 mb-10'>
             <p className="text-3xl  text-center mb-10 font-medium uppercase">We make the <span className='text-accent'>difference</span></p>
        
-    <div className="mb-10 flex justify-center gap-5">
-        
-        <div class="card w-80 bg-outline card-bordered border-accent shadow-xl">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 px-20">
+    
+        <div class="card bg-base-100 shadow-xl bg-outline card-bordered border-accent">
             <figure class="px-10 pt-10">
             <IconContext.Provider value={{ verticalAlign: 'middle',
                         color: '#FDBA55',
@@ -24,7 +24,7 @@ const BusinessSummary = () => {
                 <p className="text-lg font-medium">Top positive reviews from customer</p>
             </div>       
         </div>
-        <div class="card w-80 bg-outline card-bordered border-accent shadow-xl">
+        <div class="card bg-base-100 shadow-xl bg-outline card-bordered border-accent">
             <figure class="px-10 pt-10">
             <IconContext.Provider value={{ verticalAlign: 'middle',
                         color: '#FDBA55',
@@ -36,10 +36,10 @@ const BusinessSummary = () => {
             </figure>
             <div class="card-body items-center text-center">
                 <p className="card-title text-2xl">10M+</p>
-                <p className="text-lg font-medium">Yearly Revenew</p>
+                <p className="text-lg font-medium">Yearly Revenue</p>
             </div>       
         </div>
-        <div class="card w-80 bg-outline card-bordered border-accent shadow-xl">
+        <div class="card bg-base-100 shadow-xl bg-outline card-bordered border-accent">
             <figure class="px-10 pt-10">
             <IconContext.Provider value={{ verticalAlign: 'middle',
                         color: '#FDBA55',

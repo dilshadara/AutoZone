@@ -12,7 +12,7 @@ const Reviews = () => {
     } ,[]);
 
     return (
-        <div className=''>
+        <div>
             <p className='text-3xl text-center mb-10 font-medium uppercase' >Customer <span className='text-accent'>Review</span></p>
 
             <div className='grid grid-cols-1 lg:grid-cols-3 gap-5 px-20 '>

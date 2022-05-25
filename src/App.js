@@ -21,7 +21,7 @@ import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
-    <div >
+    <div className='bg-primary'>
      <Navbar></Navbar>
      <Routes>
         <Route path="/" element={<Home></Home>} />
