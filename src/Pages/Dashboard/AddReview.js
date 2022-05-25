@@ -2,13 +2,36 @@ import React from 'react';
 import { useForm } from "react-hook-form";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddReview = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     // const [user] = useAuthState(auth);
 
     const onSubmit =data=>{
-console.log(data);
+        console.log(data);
+
+        const rating=data.rating;
+        const review=data.review;
+
+        const reviewData={rating,review};
+
+
+        //send data to server
+        fetch('http://localhost:5000/review',{
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json',
+            },
+            body: JSON.stringify(reviewData),
+        })
+        .then(res => res.json())
+        .then(data =>{
+            // console.log('success',data);
+            // alert('New review added successfully');  
+            toast('New review added successfully');
+        })
     }
 
     return (

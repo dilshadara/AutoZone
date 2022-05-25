@@ -17,6 +17,7 @@ import ManageOrders from './Pages/Dashboard/ManageOrders';
 import AddProduct from './Pages/Dashboard/AddProduct';
 import MakeAdmin from './Pages/Dashboard/MakeAdmin';
 import ManageProducts from './Pages/Dashboard/ManageProducts';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
         <Route path="*" element={<NotFound></NotFound>} />
       </Routes>
       <Footer></Footer>
+      <ToastContainer />
     </div>
   );
 }
