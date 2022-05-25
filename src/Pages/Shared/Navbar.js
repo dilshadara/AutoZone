@@ -42,7 +42,7 @@ const Navbar = () => {
             {menuItems}
       </ul>
     </div>
-    <a className="btn btn-ghost normal-case text-2xl font-semibold">AutoZone</a>
+    <p className="btn btn-ghost normal-case text-2xl ">AutoZone</p>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal p-0">

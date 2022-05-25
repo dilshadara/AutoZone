@@ -5,7 +5,7 @@ import { IconContext } from "react-icons";
 const BusinessSummary = () => {
     return (
         <div>
-            <p className="text-3xl text-accent text-center mb-10 font-medium uppercase">We make the difference</p>
+            <p className="text-3xl  text-center mb-10 font-medium uppercase">We make the <span className='text-accent'>difference</span></p>
        
     <div className="mb-10 flex justify-center gap-5">
         
