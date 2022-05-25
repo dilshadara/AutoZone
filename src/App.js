@@ -18,6 +18,7 @@ import AddProduct from './Pages/Dashboard/AddProduct';
 import MakeAdmin from './Pages/Dashboard/MakeAdmin';
 import ManageProducts from './Pages/Dashboard/ManageProducts';
 import { ToastContainer } from 'react-toastify';
+import ToolDetail from './Pages/Home/ToolDetail';
 
 function App() {
   return (
@@ -43,6 +44,11 @@ function App() {
           <Route path="makeAdmin" element={<MakeAdmin></MakeAdmin>}></Route>
           <Route path="manageProducts" element={<ManageProducts></ManageProducts>}></Route>
         </Route>
+        <Route path="/tool/:toolId" element={
+          <RequireAuth>
+              <ToolDetail></ToolDetail>
+          </RequireAuth>
+        }></Route>
         <Route path="*" element={<NotFound></NotFound>} />
       </Routes>
       <Footer></Footer>

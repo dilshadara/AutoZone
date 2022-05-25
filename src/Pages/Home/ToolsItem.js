@@ -1,15 +1,22 @@
 import React from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const ToolsItem = ({tool}) => {
-    const {name,price,minimumOrderQuantity,availableQuantity,image} =tool;
+    const {_id,name,price,minimumOrderQuantity,availableQuantity,image} =tool;
     const  {"short-description" : description} = tool;
+
+    const navigate=useNavigate();
+    const navigateToPartsDetail = id =>{
+        navigate(`/tool/${id}`);
+
+    }
 
     return (
         <div class="card  bg-base-100 shadow-xl bg-outline card-bordered border-accent">
   <figure><img src={image} alt="parts" /></figure>
   <div class="card-body">
     <div class="card-title flex flex-col">
-        <p class="badge badge-accent justify-items-start">NEW</p>
+       
       <p>{name}</p>
      
     </div>
@@ -18,7 +25,7 @@ const ToolsItem = ({tool}) => {
     <p>Available Quantity: {availableQuantity}</p>
     <p>Minimum Order Quantity: {minimumOrderQuantity}</p>
     <div class="card-actions justify-center">
-        <button class="btn btn-accent w-full max-w-xs">Purchase</button>
+        <button onClick={() => navigateToPartsDetail(_id)} class="btn btn-accent w-full max-w-xs">Purchase</button>
     </div>
   </div>
 </div>
