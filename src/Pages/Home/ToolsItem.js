@@ -2,8 +2,8 @@ import React from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 const ToolsItem = ({tool}) => {
-    const {_id,name,price,minimumOrderQuantity,availableQuantity,image} =tool;
-    const  {"short-description" : description} = tool;
+    const {_id,name,price,minimumOrderQuantity,availableQuantity,image,description} =tool;
+    
 
     const navigate=useNavigate();
     const navigateToPartsDetail = id =>{
