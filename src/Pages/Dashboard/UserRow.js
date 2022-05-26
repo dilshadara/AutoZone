@@ -1,4 +1,6 @@
 import React from 'react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const UserRow = ({user}) => {
     const {email,name,address,phone} =user;
@@ -8,7 +10,10 @@ const UserRow = ({user}) => {
             method:'PUT'
         })
         .then(res=>res.json())
-        .then(data=>console.log(data));
+        .then(data=>{
+            console.log(data);
+            toast("Admin successfully created");
+        });
     }
 
     return (
@@ -19,7 +24,12 @@ const UserRow = ({user}) => {
         <td>{email}</td>
         <td>{address}</td>
         <td>{phone}</td>
-        <td><button onClick={createAdmin} className='btn btn-xs btn-outline'>Create New Admin</button></td>
+        <td>
+            {
+                !(user.role) &&
+                 <button onClick={createAdmin} className='btn btn-xs btn-outline'>Create New Admin</button>
+            }
+           </td>
         <td><button className='btn btn-xs btn-outline'>Remove User</button></td>
       </tr>
       
