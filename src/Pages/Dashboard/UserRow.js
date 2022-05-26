@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const UserRow = ({user}) => {
-    const {email,name,address,phone} =user;
+    const {email,name,address,phone,role} =user;
 
     const createAdmin = () =>{
         fetch(`http://localhost:5000/users/admin/${email}`,{
@@ -26,11 +26,11 @@ const UserRow = ({user}) => {
         <td>{phone}</td>
         <td>
             {
-                !(user.role) &&
+                role!=='admin' &&
                  <button onClick={createAdmin} className='btn btn-xs btn-outline'>Create New Admin</button>
             }
            </td>
-        <td><button className='btn btn-xs btn-outline'>Remove User</button></td>
+       
       </tr>
       
     );

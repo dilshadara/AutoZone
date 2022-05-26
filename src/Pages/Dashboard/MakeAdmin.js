@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {useQuery} from 'react-query';
 import Loading from '../Shared/Loading';
 import UserRow from './UserRow';
@@ -24,23 +23,23 @@ const MakeAdmin = () => {
    
     <thead >
       <tr >
-        {/* <th></th> */}
+       
         <th className='bg-accent'>Name</th>
         <th className='bg-accent'>Email</th>
         <th className='bg-accent'>Address</th>
         <th className='bg-accent'>Phone No</th>
         <th className='bg-accent'>Admin</th>
-        <th className='bg-accent'>Delete User</th>
+      
       </tr>
     </thead>
     <tbody>
-     
-        {users.map(user=><UserRow
-        key={user._id}
-        user={user}></UserRow>)}
-     
-      
+    {
+            users.map(user=><UserRow
+            key={user._id}
+            user={user}></UserRow>)
+            }
     </tbody>
+
   </table>
 </div>
         </div>
