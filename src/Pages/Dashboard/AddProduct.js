@@ -21,7 +21,7 @@ const AddProduct = () => {
  
          const partsDetails={name,price,minimumOrderQuantity,availableQuantity,image,description};
  
-         const url='http://localhost:5000/tools';
+         const url='https://fierce-cliffs-45144.herokuapp.com/tools';
  
          fetch(url, {
              method:'POST',

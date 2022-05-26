@@ -21,7 +21,7 @@ const ToolDetail = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
 
     useEffect( ()=>{
-        const url=`http://localhost:5000/tool/${toolId}`;
+        const url=`https://fierce-cliffs-45144.herokuapp.com/tool/${toolId}`;
         // console.log(url);
         fetch(url)
         .then(res=>res.json())
@@ -40,7 +40,7 @@ const ToolDetail = () => {
 
         const orderInfo={email,address,phone,orderQuantity};
 
-        const url=`http://localhost:5000/order`;
+        const url=`https://fierce-cliffs-45144.herokuapp.com/order`;
 
         fetch(url, {
             method:'POST',

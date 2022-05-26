@@ -10,7 +10,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 const Dashboard = () => {
   const [user] = useAuthState(auth);
   const {data: userInfo,isLoading}=useQuery('userInfo', () => 
-  fetch(`http://localhost:5000/user/${user.email}`,{
+  fetch(`https://fierce-cliffs-45144.herokuapp.com/user/${user.email}`,{
       method:'GET'
   }).then(res => res.json()));
 

@@ -19,7 +19,7 @@ const AddReview = () => {
 
 
         //send data to server
-        fetch('http://localhost:5000/review',{
+        fetch('https://fierce-cliffs-45144.herokuapp.com/review',{
             method:'POST',
             headers:{
                 'Content-Type':'application/json',

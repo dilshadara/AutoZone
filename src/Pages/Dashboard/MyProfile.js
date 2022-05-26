@@ -34,7 +34,7 @@ const MyProfile = () => {
     //   };
    
     useEffect( ()=>{
-        const url=`http://localhost:5000/user/${user.email}`;
+        const url=`https://fierce-cliffs-45144.herokuapp.com/user/${user.email}`;
         // console.log(url);
         fetch(url)
         .then(res=>res.json())
@@ -47,7 +47,7 @@ const MyProfile = () => {
     
 
 //     const {data: userInfo,isLoading, refetch}=useQuery('userInfo', () => 
-//         fetch(`http://localhost:5000/user/${user.email}`,{
+//         fetch(`https://fierce-cliffs-45144.herokuapp.com/user/${user.email}`,{
 //             method:'GET'
 //         }).then(res => res.json()));
 
@@ -67,7 +67,7 @@ const MyProfile = () => {
 
         const userDetails={name,email,city,phone,linkedin,education};
 
-        const url=`http://localhost:5000/user/${email}`;
+        const url=`https://fierce-cliffs-45144.herokuapp.com/user/${email}`;
 
         fetch(url, {
             method:'PUT',
