@@ -30,23 +30,24 @@ const ToolDetail = () => {
     },[]);
 
     const onSubmit = data => {
-        console.log(data);
-        console.log("user",user);
-        const name=user.displayName;
+        // console.log(data);
+        // console.log("user",user);
+        // const name=user.displayName;
         const email=user.email;
         const address=data.address;
         const phone=data.phone;
+        const orderQuantity=data.orderQuantity;
 
-        const userInfo={name,email,address,phone};
+        const orderInfo={email,address,phone,orderQuantity};
 
-        const url=`http://localhost:5000/user/${email}`;
+        const url=`http://localhost:5000/order`;
 
         fetch(url, {
-            method:'PUT',
+            method:'POST',
             headers:{
                 'content-type':'application/json'
             },
-            body: JSON.stringify(userInfo)
+            body: JSON.stringify(orderInfo)
         })
         .then(res => res.json())
         .then(data =>{          
@@ -142,6 +143,16 @@ const ToolDetail = () => {
                                    }
                                   
                                 </label>
+                        </div>
+                        <div className="form-control w-full max-w-xs flex flex-row">
+                            <label className="label">
+                                <span className="label-text">Available  Quantity: </span>
+                                
+                            </label>
+                            <label className="label">
+                                <span className="label-text">{tool.availableQuantity}</span>
+                                
+                            </label>
                         </div>
                         <div className="form-control w-full max-w-xs flex flex-row">
                             <label className="label">
