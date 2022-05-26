@@ -43,25 +43,8 @@ const Register = () => {
         await createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({ displayName:data.name });
         // console.log(data)
-        
-            const email=data.email;
-            const name=data.name;
-            const userDetails={name,email};
 
-            const url=`https://fierce-cliffs-45144.herokuapp.com/user/${email}`;
-
-            fetch(url, {
-                method:'PUT',
-                headers:{
-                    'content-type':'application/json'
-                },
-                body: JSON.stringify(userDetails)
-            })
-            .then(res => res.json())
-            .then(data =>{          
                 navigate('/');
-            })
-  
     }
 
     if (loading || updating) {
