@@ -3,13 +3,20 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import auth from '../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ToolDetail = () => {
     const {toolId}= useParams();
     const [tool,setTool]=useState({});
     const [toolQuantity,setToolQuantity]=useState(0);
+    
 
     const [user] = useAuthState(auth);
+    // const [userInfo,setUserInfo]=useState({});
+    // setUserInfo(user.email,user.displayName);
+
+    
 
     const { register, formState: { errors }, handleSubmit } = useForm();
 
@@ -20,17 +27,40 @@ const ToolDetail = () => {
         .then(res=>res.json())
         .then(data=>setTool(data))
 
-    },[toolQuantity]);
+    },[]);
 
     const onSubmit = data => {
-        // console.log(data);
+        console.log(data);
+        console.log("user",user);
+        const name=user.displayName;
+        const email=user.email;
+        const address=data.address;
+        const phone=data.phone;
+
+        const userInfo={name,email,address,phone};
+
+        const url=`http://localhost:5000/user/${email}`;
+
+        fetch(url, {
+            method:'PUT',
+            headers:{
+                'content-type':'application/json'
+            },
+            body: JSON.stringify(userInfo)
+        })
+        .then(res => res.json())
+        .then(data =>{          
+                       
+            console.log('success',data);
+            toast('Order placed successfully');            
+        })
         
     }
 
     return (
         <>
         <div class="hero mt-10">
-        <div class="hero-content flex-col lg:flex-row bg-white  w-full  justify-items-center">
+        <div class="hero-content flex-col lg:flex-row bg-white  w-4/6  justify-items-center">
           <img src={tool.image} alt=""/>
           <div>
             <h1 class="text-2xl font-bold">{tool.name}</h1>
@@ -44,8 +74,8 @@ const ToolDetail = () => {
       </div>
 
      
-      <div className='flex justify-center item-center mb-10 w-full mt-10'>
-        <div className="card bg-base-100 shadow-xl">
+      <div className='flex justify-center item-center mb-10 w-full mt-3'>
+        <div className="card bg-base-100 shadow-xl w-4/6">
             <div className="card-body">
                 <h2 className="text-center text-2xl font-bold text-accent">Place the order</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -61,21 +91,63 @@ const ToolDetail = () => {
                         </div>
                         <div className="form-control w-full flex flex-row max-w-xs">
                             <label className="label">
-                                <span className="label-text">Name: </span>
+                            <span className="label-text">Name: </span>
+
+                                
                                 
                             </label>
                             <label className="label">
                                 <span className="label-text">{user.displayName}</span>
                                 
                             </label>
+                            
+
+                            
+                        </div>
+
+                        <div className="form-control w-full flex flex-row max-w-xs mb-2">
+                            <label className="label">
+                                <span className="label-text">Address: </span>
+                                
+                            </label>
+                            <input {...register("address", {
+                                        required:{
+                                            value: true,
+                                            message: 'address is required'
+                                        },
+                                        
+                                })} type="text" placeholder="Address" className="input input-bordered w-full max-w-xs" />
+                                <label className="label">
+                                    {errors.address?.type === 'required' && <span className="label-text-alt text-red-500">{errors.address.message}</span>
+                                   }
+                                  
+                                </label>
+                        </div>
+
+                        <div className="form-control w-full flex flex-row max-w-xs">
+                            <label className="label">
+                                <span className="label-text">Phone: </span>
+                                
+                            </label>
+                            <input {...register("phone", {
+                                        required:{
+                                            value: true,
+                                            message: 'phone is required'
+                                        },
+                                        
+                                })} type="text" placeholder="Phone" className="input input-bordered w-full max-w-xs" />
+                                
+                                <label className="label">
+                                    {errors.phone?.type === 'required' && <span className="label-text-alt text-red-500">{errors.phone.message}</span>
+                                   }
+                                  
+                                </label>
                         </div>
                         
-                     
-        
-      <input className='btn btn-accent w-full max-w-xs' type="submit" value="Place Order" />
-    </form>
+                        <input className='btn btn-accent w-full max-w-xs mt-2' type="submit" value="Place Order" />
+                    </form>
     
-            </div>
+                </div>
 </div>
 </div>
       </>
