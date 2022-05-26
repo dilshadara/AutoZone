@@ -13,7 +13,7 @@ const ToolsItem = ({tool}) => {
 
     return (
         <div class="card  bg-base-100 shadow-xl bg-outline card-bordered border-accent">
-  <figure><img src={image} alt="parts" /></figure>
+  <figure><img width='200px' src={image} alt="parts" /></figure>
   <div class="card-body">
     <div class="card-title flex flex-col">
        
