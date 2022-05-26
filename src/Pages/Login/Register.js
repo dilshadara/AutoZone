@@ -7,6 +7,7 @@ import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import { useUpdateProfile } from 'react-firebase-hooks/auth';
 
+
 const Register = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [err, setErr]=useState('');
@@ -26,6 +27,8 @@ const Register = () => {
 
       const [updateProfile, updating, errorUserProfile] = useUpdateProfile(auth);
 
+      
+
     let errorElement;
 
    
@@ -40,7 +43,24 @@ const Register = () => {
         await createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({ displayName:data.name });
         // console.log(data)
-            navigate('/');
+        
+            const email=data.email;
+            const name=data.name;
+            const userDetails={name,email};
+
+            const url=`https://fierce-cliffs-45144.herokuapp.com/user/${email}`;
+
+            fetch(url, {
+                method:'PUT',
+                headers:{
+                    'content-type':'application/json'
+                },
+                body: JSON.stringify(userDetails)
+            })
+            .then(res => res.json())
+            .then(data =>{          
+                navigate('/');
+            })
   
     }
 
