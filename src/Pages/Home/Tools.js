@@ -10,7 +10,10 @@ const Tools = () => {
         .then(data=>setTools(data))
     } ,[]);
 
-    let tools6=tools.slice(0,6);
+
+   
+    let tools6=[...tools].reverse().slice(0,6);
+    
 
     return (
         <div className='mb-10'>
