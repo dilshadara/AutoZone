@@ -7,7 +7,9 @@ import UserRow from './UserRow';
 const MakeAdmin = () => {
 
     const {data: users,isLoading}=useQuery('users', () => 
-    fetch('http://localhost:5000/users').then(res => res.json()));
+    fetch('http://localhost:5000/users',{
+        method:'GET'
+    }).then(res => res.json()));
 
     if(isLoading){
         return <Loading></Loading>
@@ -27,6 +29,8 @@ const MakeAdmin = () => {
         <th className='bg-accent'>Email</th>
         <th className='bg-accent'>Address</th>
         <th className='bg-accent'>Phone No</th>
+        <th className='bg-accent'>Admin</th>
+        <th className='bg-accent'>Delete User</th>
       </tr>
     </thead>
     <tbody>
