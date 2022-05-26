@@ -89,6 +89,7 @@ const MyProfile = () => {
     return (
         <div className='mb-5'>
             <p className='text-3xl text-accent'>My Profile</p>
+            <hr className='bg-accent mb-2 mt-2' ></hr>
             <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-control w-full max-w-xs">
                         <label className="label">

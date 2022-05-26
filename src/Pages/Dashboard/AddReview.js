@@ -37,6 +37,7 @@ const AddReview = () => {
     return (
         <>
         <p className='text-3xl text-accent '>Add Reviews</p>
+        <hr className='bg-accent mb-2 mt-2' ></hr>
         <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-control w-full max-w-xs ">
         
