@@ -2,7 +2,8 @@ import React from 'react';
 import carousel1 from '../../../images/carousel/auto-banner-5.jpg';
 import carousel2 from '../../../images/carousel/auto-banner-6.jpg';
 import carousel3 from '../../../images/carousel/auto-banner-8.jpg';
-import carousel4 from '../../../images/carousel/auto-banner-9.jpg';import './banner.css';
+import carousel4 from '../../../images/carousel/auto-banner-9.jpg';
+import './banner.css';
 
 
 
