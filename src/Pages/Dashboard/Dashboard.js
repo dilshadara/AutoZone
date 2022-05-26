@@ -15,7 +15,7 @@ const Dashboard = () => {
         
         </div> 
         <div class="drawer-side">
-          <label for="dashboard-sidebar" class="drawer-overlay"></label> 
+          <label htmlFor="dashboard-sidebar" class="drawer-overlay"></label> 
 
           {/* <nav>
             <Link to="myProfile">My Profile</Link>{" "}

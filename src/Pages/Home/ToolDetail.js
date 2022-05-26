@@ -143,6 +143,36 @@ const ToolDetail = () => {
                                   
                                 </label>
                         </div>
+                        <div className="form-control w-full max-w-xs flex flex-row">
+                            <label className="label">
+                                <span className="label-text">Minimum Order Quantity: </span>
+                                
+                            </label>
+                            <label className="label">
+                                <span className="label-text">{tool.minimumOrderQuantity}</span>
+                                
+                            </label>
+                        </div>
+
+                        <div className="form-control w-full flex flex-row max-w-xs">
+                            <label className="label">
+                                <span className="label-text">Order Quantity: </span>
+                                
+                            </label>
+                            <input {...register("orderQuantity", {
+                                        required:{
+                                            value: true,
+                                            message: 'Order Quantity is required'
+                                        },
+                                        
+                                })} type="number" placeholder={tool.minimumOrderQuantity} className="input input-bordered w-full max-w-xs" />
+                                
+                                <label className="label">
+                                    {errors.orderQuantity?.type === 'required' && <span className="label-text-alt text-red-500">{errors.orderQuantity.message}</span>
+                                   }
+                                  
+                                </label>
+                        </div>
                         
                         <input className='btn btn-accent w-full max-w-xs mt-2' type="submit" value="Place Order" />
                     </form>
